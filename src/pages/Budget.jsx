@@ -51,19 +51,25 @@ export async function actionBudget({ request }) {
 const Budget = () => {
     const { budget, expenses } = useLoaderData()
     return (
-        <div className='grid-lg'>
-            <h1><span>{budget.name}</span> Overview</h1>
-            <div className="flex-lg">
+        <div className="grid grid-cols-4 gap-4" >
+            {/* <h1><span>{budget.name}</span> Overview</h1> */}
+            <div className="col-span-1">
                 <BudgetItem budget={budget} showDelete={true} />
                 <AddExpenseForm budgets={[budget]} />
+
             </div>
-            {expenses && expenses.length > 0 && (<div className='grid-md'>
-                <h2>
-                    <span>{budget.name}</span> Expenses
-                </h2>
-                <Table expenses={expenses} showBudget={false} />
-            </div>)}
-        </div>
+            <div className="col-span-3">
+                {/* <h2>
+                <span>{budget.name}</span> Expenses
+            </h2> */}
+                {
+                    expenses && expenses.length > 0 && (<div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>
+
+                        <Table expenses={expenses} showBudget={false} />
+                    </div>)
+                }
+            </div>
+        </div >
     )
 }
 
