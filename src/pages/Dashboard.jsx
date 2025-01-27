@@ -19,7 +19,6 @@ export async function actionDashboard({ request }) {
     await wait();
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
-    console.log('lol');
 
     if (_action === "newUser") {
         try {
@@ -69,35 +68,50 @@ const Dashboard = () => {
 
     return (
         <>
-            {userName ? (<div className='dashboard'>
-                <h1>Welcome back, <span>{userName}</span>!</h1>
-                <div className="grid-sm">
-                    {budgets && budgets.length > 0 ? (
-                        <div className="grid-lg">
-                            <div className="flex-lg" style={{ display: 'flex' }}>
-                                <AddBudgetForm />
-                                <AddExpenseForm budgets={budgets} />
-                            </div>
-                            <h2>Existing Budgets</h2>
-                            <div className="budgets">
+            {userName ? (
+                <div className='dashboard'>
+                    <div>
+                        <div className="budgets">
+                            <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>{userName}'s Budgets</h2>
+                            <div className="grid grid-cols-4">
                                 {budgets.map((bud) => (<BudgetItem key={bud.id} budget={bud} />))}
+                                {budgets && budgets.length > 0 ? (<AddBudgetForm />
+                                ) : (<div className="grid-sm">
+                                    <p>Personal budgeting is the secret to financial freedom</p>
+                                    <p>Create a budget to get started</p>
+                                    <AddBudgetForm />
+                                </div>)}
                             </div>
                         </div>
-                    ) : (<div className="grid-sm">
-                        <p>Personal budgeting is the secret to financial freedom</p>
-                        <p>Create a budget to get started</p>
-                        <AddBudgetForm />
-                    </div>)}
+                    </div>
+                    <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-black/10" />
                     {expenses && expenses.length > 0 && (
-                        <div className='grid-md'>
-                            <h2>Recent Expenses</h2>
-                            <Table expenses={expenses.sort((a, b) => b.createdAt - a.createdAt).slice(0, 8)} />
-                            {expenses.length > 8 && (
-                                <Link to="expenses">View all expenses</Link>
-                            )}
+                        <div className='expenses'>
+                            <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>Recent Expenses</h2>
+                            <div className="grid grid-cols-4 gap-4">
+                                <div className='...'>
+                                    <AddExpenseForm budgets={budgets} />
+                                </div>
+                                <div className="col-span-3">
+                                    <div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>
+
+                                        <Table expenses={expenses.sort((a, b) => b.createdAt - a.createdAt).slice(0, 8)} />
+                                        {expenses.length > 8 && (
+                                            <div className="flex justify-center pt-6">
+                                                <Link to="expenses" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
+                                                    <span>
+                                                        View all expenses
+                                                    </span>
+                                                </Link>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
                         </div>)}
-                </div>
-            </div>) : (<Intro />)}
+
+                </div>) : (<Intro />)
+            }
         </>
     )
 }

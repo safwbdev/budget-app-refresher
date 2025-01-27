@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './App.css'
+// import './App.css'
 import Dashboard, { actionDashboard, loadDashboard } from './pages/Dashboard'
 import Error from './pages/Error'
 import Main, { loadMain } from './layouts/main'

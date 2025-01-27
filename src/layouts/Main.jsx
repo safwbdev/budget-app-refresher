@@ -14,7 +14,7 @@ const Main = () => {
     return (
         <div className='layout' style={{ width: '100%' }}>
             <Nav userName={userName} />
-            <main>
+            <main class="p-6">
                 <Outlet />
             </main>
         </div>
