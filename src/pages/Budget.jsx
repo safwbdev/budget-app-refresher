@@ -1,15 +1,16 @@
 import React from 'react'
 import { createExpense, deleteItem, getAllMatchingItems } from '../helper'
 import { useLoaderData } from 'react-router-dom';
-import BudgetItem from '../components/BudgetItem';
-import AddExpenseForm from '../components/AddExpenseForm';
-import Table from '../components/Table';
 import { toast } from 'react-toastify';
+import AddExpenseForm from '../components/AddExpenseForm';
+import BudgetItem from '../components/BudgetItem';
+import Table from '../components/Table';
 
 export async function loadBudget({ params }) {
     const budget = await getAllMatchingItems({
         category: "budgets", key: "id", value: params.id
     })[0];
+
     const expenses = await getAllMatchingItems({
         category: "expenses", key: "budgetId", value: params.id
     });
@@ -18,11 +19,9 @@ export async function loadBudget({ params }) {
         throw new Error("The budget doesn't exist");
     }
     return { budget, expenses }
-
 }
 
 export async function actionBudget({ request }) {
-
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
 
@@ -52,21 +51,15 @@ const Budget = () => {
     const { budget, expenses } = useLoaderData()
     return (
         <div className="grid grid-cols-4 gap-4" >
-            {/* <h1><span>{budget.name}</span> Overview</h1> */}
             <div className="col-span-1">
                 <BudgetItem budget={budget} showDelete={true} />
                 <AddExpenseForm budgets={[budget]} />
 
             </div>
             <div className="col-span-3">
-                {/* <h2>
-                <span>{budget.name}</span> Expenses
-            </h2> */}
-                {
-                    expenses && expenses.length > 0 && (<div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>
-
-                        <Table expenses={expenses} showBudget={false} />
-                    </div>)
+                {expenses && expenses.length > 0 && (<div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>
+                    <Table expenses={expenses} showBudget={false} />
+                </div>)
                 }
             </div>
         </div >

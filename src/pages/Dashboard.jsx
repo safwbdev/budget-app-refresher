@@ -84,7 +84,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-black/10" />
+                    <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-black/10" />
                     {expenses && expenses.length > 0 && (
                         <div className='expenses'>
                             <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>Recent Expenses</h2>

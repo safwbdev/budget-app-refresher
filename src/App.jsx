@@ -8,47 +8,48 @@ import { ToastContainer } from 'react-toastify';
 import Expenses, { actionExpenses, loadExpenses } from './pages/Expenses'
 import Budget, { actionBudget, loadBudget } from './pages/Budget'
 import { deleteBudget } from './actions/deleteBudget'
+import { ABOUT, BUDGET, DELETE, EXPENSES, LOGOUT, ROOT } from './routes'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: ROOT,
     element: <Main />,
     loader: loadMain,
     errorElement: <Error />,
     children: [
       {
         index: true,
-        path: "/",
+        path: ROOT,
         element: <Dashboard />,
         loader: loadDashboard,
         action: actionDashboard,
         errorElement: <Error />
       },
       {
-        path: "expenses",
+        path: EXPENSES,
         element: <Expenses />,
         loader: loadExpenses,
         action: actionExpenses,
         errorElement: <Error />
       },
       {
-        path: "budget/:id",
+        path: `${BUDGET}/:id`,
         element: <Budget />,
         loader: loadBudget,
         action: actionBudget,
         errorElement: <Error />,
         children: [
           {
-            path: "delete",
+            path: DELETE,
             action: deleteBudget
           }
         ]
       },
       {
-        path: "about",
+        path: ABOUT,
         element: <p>About</p>
       }, {
-        path: "logout",
+        path: LOGOUT,
         action: logoutAction
       }]
   },

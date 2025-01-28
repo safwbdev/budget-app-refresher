@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useNavigate, useRouteError } from 'react-router-dom'
+import { ROOT } from '../routes';
 
 const Error = () => {
     const error = useRouteError();
@@ -10,7 +11,7 @@ const Error = () => {
             <p>{error.message || error.statusText}</p>
             <div className='flex'>
                 <button onClick={() => navigate(-1)}></button>
-                <Link to={"/"} className="button">
+                <Link to={ROOT} className="button">
                     <span>Go home</span>
                 </Link>
 

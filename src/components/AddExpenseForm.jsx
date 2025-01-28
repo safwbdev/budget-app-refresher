@@ -18,7 +18,7 @@ const AddExpenseForm = ({ budgets }) => {
         <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6">
             <fetcher.Form method='post' ref={formRef}>
                 <h3 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>Add new{" "}
-                    <span>
+                    <span className='text-blue-500'>
                         {budgets.length === 1 && `${budgets.map((bud) => bud.name)}`}
                     </span> Expense
                 </h3>

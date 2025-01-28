@@ -1,6 +1,7 @@
 import React from 'react'
 import { formatCurrency, formatDateToLocaleString, getAllMatchingItems } from '../helper'
 import { Form, Link, useFetcher } from 'react-router-dom';
+import { BUDGET } from '../routes';
 
 const ExpenseItem = ({ expense, showBudget }) => {
     const fetcher = useFetcher()
@@ -13,11 +14,21 @@ const ExpenseItem = ({ expense, showBudget }) => {
 
     return (
         <>
-            <td class="p-4 border-b border-blue-gray-50">{expense.name}</td>
-            <td class="p-4 border-b border-blue-gray-50">{formatCurrency(expense.amount)}</td>
-            <td class="p-4 border-b border-blue-gray-50">{formatDateToLocaleString(expense.createdAt)}</td>
-            {showBudget && (<td class="p-4 border-b border-blue-gray-50"><Link to={`/budget/${budget.id}`} className='bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300'>{budget.name}</Link></td>)}
-            <td class="p-4 border-b border-blue-gray-50">
+            <td className="p-4 border-b border-blue-gray-50">
+                {expense.name}</td>
+            <td className="p-4 border-b border-blue-gray-50">
+                {formatCurrency(expense.amount)}
+            </td>
+            <td className="p-4 border-b border-blue-gray-50">
+                {formatDateToLocaleString(expense.createdAt)}
+            </td>
+            {showBudget && (
+                <td className="p-4 border-b border-blue-gray-50">
+                    <Link to={`/${BUDGET}/${budget.id}`} className='bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300'>
+                        {budget.name}
+                    </Link>
+                </td>)}
+            <td className="p-4 border-b border-blue-gray-50">
                 <fetcher.Form method="post">
                     <input type="hidden" name="_action" value={"deleteExpense"} />
                     <input type="hidden" name="expenseId" value={expense.id} />

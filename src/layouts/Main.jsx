@@ -12,9 +12,9 @@ export function loadMain() {
 const Main = () => {
     const { userName } = useLoaderData();
     return (
-        <div className='layout' style={{ width: '100%' }}>
+        <div className='layout'>
             <Nav userName={userName} />
-            <main class="p-6">
+            <main className="p-6">
                 <Outlet />
             </main>
         </div>

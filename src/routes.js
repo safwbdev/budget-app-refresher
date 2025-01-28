@@ -1,0 +1,6 @@
+export const ROOT = "/"
+export const BUDGET = "budget"
+export const EXPENSES = "expenses"
+export const DELETE = "delete"
+export const ABOUT = "about"
+export const LOGOUT = "logout"
