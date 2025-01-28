@@ -31,7 +31,7 @@ const BudgetCollection = () => {
     return (
         <div>
             <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>Your Budgets</h2>
-            <div className="grid grid-cols-4">
+            <div className="grid md:grid-cols-4">
                 {budgets && budgets.map((bud) => (<BudgetItem key={bud.id} budget={bud} />))}
                 {budgets && budgets.length > 0 ? (<AddBudgetForm />
                 ) : (

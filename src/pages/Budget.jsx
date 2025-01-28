@@ -51,7 +51,7 @@ export async function actionBudget({ request }) {
 const Budget = () => {
     const { budget, expenses } = useLoaderData()
     return (
-        <div className="grid grid-cols-4 gap-4" >
+        <div className="grid md:grid-cols-4 gap-4" >
             <div className="col-span-1">
                 <BudgetItem budget={budget} showDelete={true} />
                 <AddExpenseForm budgets={[budget]} />

@@ -47,7 +47,7 @@ const Expenses = () => {
 
     return (
         <div className='grid-lg'>
-            <div className="grid grid-cols-4">
+            <div className="grid md:grid-cols-4">
                 <div className="...">
                     <AddExpenseForm budgets={budgets} />
                 </div>

@@ -73,7 +73,7 @@ const Dashboard = () => {
                     <div>
                         <div className="budgets">
                             <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>{userName}'s Budgets</h2>
-                            <div className="grid grid-cols-4">
+                            <div className="grid md:grid-cols-4">
                                 {budgets && budgets.map((bud) => (<BudgetItem key={bud.id} budget={bud} />))}
                                 {budgets && budgets.length > 0 ? (<AddBudgetForm />
                                 ) : (
@@ -91,7 +91,7 @@ const Dashboard = () => {
                     {expenses && expenses.length > 0 ? (
                         <div className='expenses'>
                             <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>Recent Expenses</h2>
-                            <div className="grid grid-cols-4 gap-4">
+                            <div className="grid md:grid-cols-4 gap-4">
                                 <div className='...'>
                                     <AddExpenseForm budgets={budgets} />
                                 </div>
