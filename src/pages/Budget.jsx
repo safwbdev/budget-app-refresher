@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import AddExpenseForm from '../components/AddExpenseForm';
 import BudgetItem from '../components/BudgetItem';
 import Table from '../components/Table';
+import { DELETE_EXPENSE, NEW_EXPENSE } from '../routes';
 
 export async function loadBudget({ params }) {
     const budget = await getAllMatchingItems({
@@ -25,7 +26,7 @@ export async function actionBudget({ request }) {
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
 
-    if (_action === "deleteExpense") {
+    if (_action === DELETE_EXPENSE) {
         try {
             deleteItem({
                 key: "expenses",
@@ -37,7 +38,7 @@ export async function actionBudget({ request }) {
         }
     }
 
-    if (_action === "createExpense") {
+    if (_action === NEW_EXPENSE) {
         try {
             createExpense({ name: values.newExpense, amount: values.newExpenseAmount, budgetId: values.newExpenseBudget })
             return toast.success(`Expense ${values.newExpense} created!`)
@@ -57,10 +58,16 @@ const Budget = () => {
 
             </div>
             <div className="col-span-3">
-                {expenses && expenses.length > 0 && (<div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>
-                    <Table expenses={expenses} showBudget={false} />
-                </div>)
-                }
+                <div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>
+                    {expenses && expenses.length > 0 ? (
+                        <Table expenses={expenses} showBudget={false} />
+                    ) : (
+                        <div className="flex justify-center">
+                            <p className='text-gray-100 text-sm font-bold'>No expenses found</p>
+                        </div>
+                    )
+                    }
+                </div>
             </div>
         </div >
     )

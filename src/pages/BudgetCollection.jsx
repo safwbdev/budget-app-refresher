@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { fetchData } from '../helper';
 import BudgetItem from '../components/BudgetItem';
 import AddBudgetForm from '../components/AddBudgetForm';
+import { NEW_BUDGET } from '../routes';
 
 export function loadBudgetCollection() {
     const budgets = fetchData("budgets");
@@ -14,7 +15,7 @@ export async function actionBudgetCollection({ request }) {
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
 
-    if (_action === "createBudget") {
+    if (_action === NEW_BUDGET) {
         try {
             createBudget({ name: values.newBudget, amount: values.newBudgetAmount })
             return toast.success("Budget created!")

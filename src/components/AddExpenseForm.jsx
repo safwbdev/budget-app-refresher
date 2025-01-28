@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useFetcher } from 'react-router-dom'
+import { NEW_EXPENSE } from '../routes';
 
 const AddExpenseForm = ({ budgets }) => {
     const fetcher = useFetcher();
@@ -39,7 +40,7 @@ const AddExpenseForm = ({ budgets }) => {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <input type="hidden" name="_action" value='createExpense' />
+                    <input type="hidden" name="_action" value={NEW_EXPENSE} />
                     <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" disabled={isSubmitting}>
                         <span>
                             {isSubmitting ? 'Submitting...' : 'Create Expense'}

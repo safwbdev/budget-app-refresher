@@ -7,6 +7,7 @@ import AddBudgetForm from '../components/AddBudgetForm';
 import AddExpenseForm from '../components/AddExpenseForm';
 import BudgetItem from '../components/BudgetItem';
 import Table from '../components/Table';
+import { DELETE_EXPENSE, NEW_BUDGET, NEW_EXPENSE, NEW_USER } from '../routes';
 
 
 export function loadDashboard() {
@@ -20,7 +21,7 @@ export async function actionDashboard({ request }) {
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
 
-    if (_action === "newUser") {
+    if (_action === NEW_USER) {
         try {
             localStorage.setItem("userName", JSON.stringify(values.userName))
             return toast.success(`Welcome ${values.userName}!`)
@@ -31,7 +32,7 @@ export async function actionDashboard({ request }) {
         }
     }
 
-    if (_action === "createBudget") {
+    if (_action === NEW_BUDGET) {
         try {
             createBudget({ name: values.newBudget, amount: values.newBudgetAmount })
             return toast.success("Budget created!")
@@ -40,7 +41,7 @@ export async function actionDashboard({ request }) {
         }
     }
 
-    if (_action === "createExpense") {
+    if (_action === NEW_EXPENSE) {
         try {
             createExpense({ name: values.newExpense, amount: values.newExpenseAmount, budgetId: values.newExpenseBudget })
             return toast.success(`Expense ${values.newExpense} created!`)
@@ -48,8 +49,7 @@ export async function actionDashboard({ request }) {
             throw new Error("There was an issue with creating your expense.");
         }
     }
-    if (_action === "deleteExpense") {
-        console.log('del');
+    if (_action === DELETE_EXPENSE) {
         try {
 
             deleteItem({
@@ -94,7 +94,6 @@ const Dashboard = () => {
                                 </div>
                                 <div className="col-span-3">
                                     <div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>
-
                                         <Table expenses={expenses.sort((a, b) => b.createdAt - a.createdAt).slice(0, 8)} />
                                         {expenses.length > 8 && (
                                             <div className="flex justify-center pt-6">
