@@ -9,6 +9,7 @@ import Expenses, { actionExpenses, loadExpenses } from './pages/Expenses'
 import Budget, { actionBudget, loadBudget } from './pages/Budget'
 import { deleteBudget } from './actions/deleteBudget'
 import { ABOUT, BUDGET, DELETE, EXPENSES, LOGOUT, ROOT } from './routes'
+import BudgetCollection, { actionBudgetCollection, loadBudgetCollection } from './pages/BudgetCollection'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,14 @@ const router = createBrowserRouter([
         element: <Expenses />,
         loader: loadExpenses,
         action: actionExpenses,
+        errorElement: <Error />
+      },
+      {
+        index: true,
+        path: BUDGET,
+        element: <BudgetCollection />,
+        loader: loadBudgetCollection,
+        action: actionBudgetCollection,
         errorElement: <Error />
       },
       {

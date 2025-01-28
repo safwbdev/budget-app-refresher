@@ -39,7 +39,7 @@ const BudgetItem = ({ budget, showDelete = false }) => {
                         </button>
                     </Form>
                 ) : (
-                    <Link to={`${BUDGET}/${id}`}>
+                    <Link to={`/${BUDGET}/${id}`}>
                         <span className='inline-flex font-medium items-center text-blue-600 hover:underline'>
                             View details
                             <svg className="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
