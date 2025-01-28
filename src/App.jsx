@@ -3,7 +3,7 @@ import Dashboard, { actionDashboard, loadDashboard } from './pages/Dashboard'
 import Error from './pages/Error'
 import Expenses, { actionExpenses, loadExpenses } from './pages/Expenses'
 import Budget, { actionBudget, loadBudget } from './pages/Budget'
-import Main, { loadMain } from './layouts/main'
+import Main, { loadMain } from './layouts/Main'
 import { logoutAction } from './actions/logout'
 import { ToastContainer } from 'react-toastify';
 import { deleteBudget } from './actions/deleteBudget'
