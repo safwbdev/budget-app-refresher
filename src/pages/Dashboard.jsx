@@ -74,18 +74,21 @@ const Dashboard = () => {
                         <div className="budgets">
                             <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>{userName}'s Budgets</h2>
                             <div className="grid grid-cols-4">
-                                {budgets.map((bud) => (<BudgetItem key={bud.id} budget={bud} />))}
+                                {budgets && budgets.map((bud) => (<BudgetItem key={bud.id} budget={bud} />))}
                                 {budgets && budgets.length > 0 ? (<AddBudgetForm />
-                                ) : (<div className="grid-sm">
-                                    <p>Personal budgeting is the secret to financial freedom</p>
-                                    <p>Create a budget to get started</p>
-                                    <AddBudgetForm />
-                                </div>)}
+                                ) : (
+                                    <>
+                                        <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6 flex justify-center items-center flex-col">
+                                            <p className='text-gray-100 text-lg font-bold'>Personal budgeting is the secret to financial freedom</p>
+                                        </div>
+                                        <AddBudgetForm isBudgetEmpty />
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>
                     <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-black/10" />
-                    {expenses && expenses.length > 0 && (
+                    {expenses && expenses.length > 0 ? (
                         <div className='expenses'>
                             <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>Recent Expenses</h2>
                             <div className="grid grid-cols-4 gap-4">
@@ -107,6 +110,8 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>) : (<div>
+                            <h2 className='text-gray-500  text-2xl font-bold mb-2'>No expenses found</h2>
                         </div>)}
 
                 </div>) : (<Intro />)

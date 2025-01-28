@@ -32,20 +32,16 @@ const BudgetCollection = () => {
         <div>
             <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>Your Budgets</h2>
             <div className="grid grid-cols-4">
-                <div className="...">
-                    {budgets && budgets.length > 0 ? (<AddBudgetForm />
-                    ) : (<div className="grid-sm">
-                        <p>Personal budgeting is the secret to financial freedom</p>
-                        <p>Create a budget to get started</p>
-                        <AddBudgetForm />
-                    </div>)}
-                </div>
-                <div className="col-span-3">
-                    <div className="grid grid-cols-3">
-                        {budgets.map((bud) => (<BudgetItem key={bud.id} budget={bud} />))}
-
-                    </div>
-                </div>
+                {budgets && budgets.map((bud) => (<BudgetItem key={bud.id} budget={bud} />))}
+                {budgets && budgets.length > 0 ? (<AddBudgetForm />
+                ) : (
+                    <>
+                        <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6 flex justify-center items-center flex-col">
+                            <p className='text-gray-100 text-lg font-bold'>No Budgets found</p>
+                        </div>
+                        <AddBudgetForm isBudgetEmpty />
+                    </>
+                )}
             </div>
         </div>
     )

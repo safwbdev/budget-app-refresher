@@ -20,7 +20,7 @@ const AddExpenseForm = ({ budgets }) => {
             <fetcher.Form method='post' ref={formRef}>
                 <h3 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>Add new{" "}
                     <span className='text-blue-500'>
-                        {budgets.length === 1 && `${budgets.map((bud) => bud.name)}`}
+                        {budgets && budgets.length === 1 && `${budgets.map((bud) => bud.name)}`}
                     </span> Expense
                 </h3>
                 <div className="expense-inputs">
@@ -32,10 +32,10 @@ const AddExpenseForm = ({ budgets }) => {
                         <label htmlFor="newExpenseAmount" className="block text-gray-100 text-sm font-bold mb-2">Amount</label>
                         <input type="number" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline" step={0.01} inputMode='decimal' name="newExpenseAmount" id="newExpenseAmount" placeholder='e.g. 3.50' required />
                     </div>
-                    <div className="mb-4" hidden={budgets.length === 1}>
+                    <div className="mb-4" hidden={budgets && budgets.length === 1}>
                         <label htmlFor="newExpenseBudget" className="block text-gray-100 text-sm font-bold mb-2">Budget Category</label>
                         <select name="newExpenseBudget" id="newExpenseBudget" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline" required>
-                            {budgets.sort((a, b) => a.createdAt - b.createdAt).map((budget) => (<option key={budget.id} value={budget.id}>{budget.name}</option>))}
+                            {budgets && budgets.sort((a, b) => a.createdAt - b.createdAt).map((budget) => (<option key={budget.id} value={budget.id}>{budget.name}</option>))}
                         </select>
                     </div>
                 </div>
