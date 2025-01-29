@@ -5,7 +5,7 @@ import { ROOT } from '../routes'
 
 const Nav = ({ userName }) => {
     return (
-        <nav className="fixed  w-full flex items-center justify-between flex-wrap bg-gray-800 p-6">
+        <nav className="fixed  w-full flex items-center justify-between flex-wrap bg-gray-800 p-6 z-10">
             <div className="flex items-center flex-shrink-0 text-white mr-6">
                 <NavLink to={ROOT} aria-label='Go home'>
                     <span className="font-semibold text-xl tracking-tight">BAJIT</span>

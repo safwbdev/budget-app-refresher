@@ -94,8 +94,6 @@ const Dashboard = () => {
                                     <Swiper
                                         slidesPerView={1}
                                         spaceBetween={10}
-                                        // centeredSlides={true}
-                                        // navigation={true}
                                         pagination={{
                                             clickable: true,
                                         }}
