@@ -91,11 +91,11 @@ const Dashboard = () => {
                     {expenses && expenses.length > 0 ? (
                         <div className='expenses'>
                             <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>Recent Expenses</h2>
-                            <div className="grid md:grid-cols-4 gap-4">
-                                <div className='...'>
+                            <div className="grid grid-cols-1 gap-1 md:grid-cols-4 gap-4">
+                                <div className='col-span-1'>
                                     <AddExpenseForm budgets={budgets} />
                                 </div>
-                                <div className="col-span-3">
+                                <div className="col-span-1 md:col-span-3 order-first md:order-last">
                                     <div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>
                                         <Table expenses={expenses.sort((a, b) => b.createdAt - a.createdAt).slice(0, 8)} />
                                         {expenses.length > 8 && (

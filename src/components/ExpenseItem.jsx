@@ -2,6 +2,7 @@ import React from 'react'
 import { formatCurrency, formatDateToLocaleString, getAllMatchingItems } from '../helper'
 import { Form, Link, useFetcher } from 'react-router-dom';
 import { BUDGET, DELETE_EXPENSE } from '../routes';
+import { FaTrashAlt } from "react-icons/fa";
 
 const ExpenseItem = ({ expense, showBudget }) => {
     const fetcher = useFetcher()
@@ -19,11 +20,11 @@ const ExpenseItem = ({ expense, showBudget }) => {
             <td className="p-4 border-b border-blue-gray-50">
                 {formatCurrency(expense.amount)}
             </td>
-            <td className="p-4 border-b border-blue-gray-50">
+            <td className="p-4 border-b border-blue-gray-50 max-sm:hidden">
                 {formatDateToLocaleString(expense.createdAt)}
             </td>
             {showBudget && (
-                <td className="p-4 border-b border-blue-gray-50">
+                <td className="p-4 border-b border-blue-gray-50 max-sm:hidden">
                     <Link to={`/${BUDGET}/${budget.id}`} className='bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300'>
                         {budget.name}
                     </Link>
@@ -45,7 +46,8 @@ const ExpenseItem = ({ expense, showBudget }) => {
                             }
                             type = "submit"
                         }}>
-                        <span>Delete</span>
+                        <span className='max-sm:hidden'>Delete</span>
+                        <span className='lg:hidden'><FaTrashAlt /></span>
                     </button>
                 </fetcher.Form>
             </td>

@@ -6,7 +6,7 @@ const Table = ({ expenses, showBudget = true }) => {
     const tableHeaders = ["Name", "Amount", "Date", showBudget ? "Budget" : "", ""];
     return (
         <table className="w-full text-left table-auto min-w-max dark:text-gray-100">
-            <thead>
+            <thead className='max-sm:hidden'>
                 <tr>
                     {tableHeaders.map((i, index) => (
                         <th key={index} className="p-4 border-b border-blue-gray-100 bg-blue-gray-50">{i}</th>
