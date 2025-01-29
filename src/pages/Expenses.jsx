@@ -56,7 +56,7 @@ const Expenses = () => {
                         {expenses && expenses.length > 0 ?
                             (<div>
                                 <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                                    Recent Expenses <small>({expenses.length}) total</small>
+                                    All Expenses <small>({expenses.length}) total</small>
                                 </h2>
                                 <Table expenses={expenses} />
                             </div>) : (<div className="flex justify-center">

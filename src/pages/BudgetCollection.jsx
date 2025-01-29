@@ -30,7 +30,7 @@ const BudgetCollection = () => {
     const { budgets } = useLoaderData();
     return (
         <div className='px-6'>
-            <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>Your Budgets</h2>
+            <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>All Budgets</h2>
             <div className="grid md:grid-cols-4">
                 {budgets && budgets.map((bud) => (<BudgetItem key={bud.id} budget={bud} />))}
                 {budgets && budgets.length > 0 ? (<AddBudgetForm />
