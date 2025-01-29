@@ -4,14 +4,14 @@ import { NEW_USER } from '../routes'
 
 const Intro = () => {
     return (
-        <div className='intro'>
-            <div className="grid grid-cols-3">
-                <div className="col-span-2">
+        <div className='intro px-6'>
+            <div className="grid grid-cols-1 gap-1 md:grid-cols-3">
+                <div className="col-span-1 md:col-span-2">
                     <h1 className='text-2xl font-bold tracking-tight text-gray-900'>BAJIT</h1>
                     <h2>Take control of <span>Your Money</span></h2>
                     <p>Personal budgeting is the secret to financial freedom. Start your journey today</p>
                 </div>
-                <div className="...">
+                <div className="colspan-1  md:order-last pt-6">
                     <div className="block max-w-sm p-6 py-8 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6">
                         <h3 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
                             Create an Account

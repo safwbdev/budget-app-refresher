@@ -151,7 +151,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </div>) : (<div>
-                            <h2 className='text-gray-500  text-2xl font-bold mb-2'>No expenses found</h2>
+                            <h2 className='text-gray-500  text-2xl font-bold mb-2 px-6'>No expenses found</h2>
                         </div>)}
 
                 </div>) : (<Intro />)

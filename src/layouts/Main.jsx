@@ -2,6 +2,7 @@ import React from 'react'
 import { fetchData } from '../helper'
 import { Outlet, useLoaderData } from 'react-router-dom';
 import Nav from '../components/Nav';
+import BottomNav from '../components/BottomNav';
 
 
 export function loadMain() {
@@ -14,9 +15,11 @@ const Main = () => {
     return (
         <div className='layout'>
             <Nav userName={userName} />
-            <main className="py-6">
+            <main className="py-25">
                 <Outlet />
             </main>
+            {userName && (<BottomNav />
+            )}
         </div>
     )
 }
