@@ -8,6 +8,11 @@ import AddExpenseForm from '../components/AddExpenseForm';
 import BudgetItem from '../components/BudgetItem';
 import Table from '../components/Table';
 import { DELETE_EXPENSE, NEW_BUDGET, NEW_EXPENSE, NEW_USER } from '../routes';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 
 export function loadDashboard() {
@@ -72,30 +77,65 @@ const Dashboard = () => {
                 <div className='dashboard'>
                     <div>
                         <div className="budgets">
-                            <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>{userName}'s Budgets</h2>
-                            <div className="grid md:grid-cols-4">
-                                {budgets && budgets.map((bud) => (<BudgetItem key={bud.id} budget={bud} />))}
-                                {budgets && budgets.length > 0 ? (<AddBudgetForm />
-                                ) : (
-                                    <>
-                                        <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6 flex justify-center items-center flex-col">
-                                            <p className='text-gray-100 text-lg font-bold'>Personal budgeting is the secret to financial freedom</p>
-                                        </div>
-                                        <AddBudgetForm isBudgetEmpty />
-                                    </>
-                                )}
+                            <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 px-6'>{userName}'s Budgets</h2>
+                            <div className="grid grid-cols-1 gap-1 md:grid-cols-4 gap-4">
+                                <div className='col-span-1 px-6'>
+                                    {budgets && budgets.length > 0 ? (<AddBudgetForm />
+                                    ) : (
+                                        <>
+                                            <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6 flex justify-center items-center flex-col">
+                                                <p className='text-gray-100 text-lg font-bold'>Personal budgeting is the secret to financial freedom</p>
+                                            </div>
+                                            <AddBudgetForm isBudgetEmpty />
+                                        </>
+                                    )}
+                                </div>
+                                <div className="col-span-1 md:col-span-3 order-first md:order-last">
+                                    <Swiper
+                                        slidesPerView={1}
+                                        spaceBetween={10}
+                                        // centeredSlides={true}
+                                        // navigation={true}
+                                        pagination={{
+                                            clickable: true,
+                                        }}
+                                        breakpoints={{
+                                            320: {
+                                                slidesPerView: 1.2,
+                                                centeredSlides: true,
+                                                spaceBetween: 20,
+                                            },
+                                            768: {
+                                                slidesPerView: 3,
+                                                spaceBetween: 40,
+                                            },
+                                            1024: {
+                                                slidesPerView: 3.5,
+                                                spaceBetween: 50,
+                                            },
+                                        }}
+                                        modules={[Pagination, Navigation]}
+                                        className="mySwiper"
+                                    >
+                                        {budgets && budgets.map((bud) => (
+                                            <SwiperSlide>
+                                                <BudgetItem key={bud.id} budget={bud} />
+                                            </SwiperSlide>)
+                                        )}
+                                    </Swiper>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-black/10" />
                     {expenses && expenses.length > 0 ? (
                         <div className='expenses'>
-                            <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900'>Recent Expenses</h2>
+                            <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 px-6'>Recent Expenses</h2>
                             <div className="grid grid-cols-1 gap-1 md:grid-cols-4 gap-4">
-                                <div className='col-span-1'>
+                                <div className='col-span-1 px-6'>
                                     <AddExpenseForm budgets={budgets} />
                                 </div>
-                                <div className="col-span-1 md:col-span-3 order-first md:order-last">
+                                <div className="col-span-1 md:col-span-3 order-first md:order-last px-6">
                                     <div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>
                                         <Table expenses={expenses.sort((a, b) => b.createdAt - a.createdAt).slice(0, 8)} />
                                         {expenses.length > 8 && (

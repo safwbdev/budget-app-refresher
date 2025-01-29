@@ -14,7 +14,7 @@ const Main = () => {
     return (
         <div className='layout'>
             <Nav userName={userName} />
-            <main className="p-6">
+            <main className="py-6">
                 <Outlet />
             </main>
         </div>
