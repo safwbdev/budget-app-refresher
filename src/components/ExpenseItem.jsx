@@ -16,7 +16,7 @@ const ExpenseItem = ({ expense, showBudget }) => {
     return (
         <>
             <td className="p-4 border-b border-blue-gray-50">
-                {expense.name}</td>
+                {expense.name.length > 10 ? `${expense.name.slice(0, 10)}...` : expense.name}</td>
             <td className="p-4 border-b border-blue-gray-50">
                 {formatCurrency(expense.amount)}
             </td>

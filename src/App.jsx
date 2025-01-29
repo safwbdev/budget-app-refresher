@@ -7,7 +7,7 @@ import Main, { loadMain } from './layouts/Main'
 import { logoutAction } from './actions/logout'
 import { ToastContainer } from 'react-toastify';
 import { deleteBudget } from './actions/deleteBudget'
-import { ABOUT, BUDGET, DELETE, EXPENSES, LOGOUT, ROOT } from './routes'
+import { BUDGET, DELETE, EXPENSES, LOGOUT, ROOT } from './routes'
 import BudgetCollection, { actionBudgetCollection, loadBudgetCollection } from './pages/BudgetCollection'
 
 const router = createBrowserRouter([
@@ -54,9 +54,6 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: ABOUT,
-        element: <p>About</p>
-      }, {
         path: LOGOUT,
         action: logoutAction
       }]

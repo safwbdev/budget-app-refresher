@@ -7,7 +7,7 @@ import AddBudgetForm from '../components/AddBudgetForm';
 import AddExpenseForm from '../components/AddExpenseForm';
 import BudgetItem from '../components/BudgetItem';
 import Table from '../components/Table';
-import { DELETE_EXPENSE, NEW_BUDGET, NEW_EXPENSE, NEW_USER } from '../routes';
+import { BUDGET, DELETE_EXPENSE, EXPENSES, NEW_BUDGET, NEW_EXPENSE, NEW_USER } from '../routes';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import { Navigation } from 'swiper/modules';
@@ -102,18 +102,20 @@ const Dashboard = () => {
                                                 slidesPerView: 1.2,
                                                 centeredSlides: true,
                                                 spaceBetween: 20,
+                                                enabled: true
                                             },
                                             768: {
                                                 slidesPerView: 3,
                                                 spaceBetween: 40,
+                                                enabled: false
                                             },
                                             1024: {
-                                                slidesPerView: 3.5,
+                                                slidesPerView: 4,
                                                 spaceBetween: 50,
+                                                enabled: false,
                                             },
                                         }}
                                         modules={[Pagination, Navigation]}
-                                        className="mySwiper"
                                     >
                                         {budgets && budgets.map((bud) => (
                                             <SwiperSlide>
@@ -121,6 +123,13 @@ const Dashboard = () => {
                                             </SwiperSlide>)
                                         )}
                                     </Swiper>
+                                    <div className="flex justify-center pt-6">
+                                        <Link to={BUDGET} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
+                                            <span>
+                                                View all Budgets
+                                            </span>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +147,7 @@ const Dashboard = () => {
                                         <Table expenses={expenses.sort((a, b) => b.createdAt - a.createdAt).slice(0, 8)} />
                                         {expenses.length > 8 && (
                                             <div className="flex justify-center pt-6">
-                                                <Link to="expenses" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
+                                                <Link to={EXPENSES} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
                                                     <span>
                                                         View all expenses
                                                     </span>
