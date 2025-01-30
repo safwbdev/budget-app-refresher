@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatCurrency, formatDateToLocaleString, getAllMatchingItems } from '../helper'
+import { confirmDeleteExpense, formatCurrency, formatDateToLocaleString, getAllMatchingItems } from '../helper'
 import { Form, Link, useFetcher } from 'react-router-dom';
 import { BUDGET, DELETE_EXPENSE } from '../routes';
 import { FaTrashAlt } from "react-icons/fa";
@@ -36,16 +36,7 @@ const ExpenseItem = ({ expense, showBudget }) => {
                     <button
                         aria-label={`Delete ${expense.name} expense`}
                         className='focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'
-                        onSubmit={(event) => {
-                            if (
-                                !confirm(
-                                    "Are you sure you want to permanently delete this expense?"
-                                )
-                            ) {
-                                event.preventDefault();
-                            }
-                            type = "submit"
-                        }}>
+                        onSubmit={confirmDeleteExpense}>
                         <span className='max-sm:hidden'>Delete</span>
                         <span className='lg:hidden'><FaTrashAlt /></span>
                     </button>

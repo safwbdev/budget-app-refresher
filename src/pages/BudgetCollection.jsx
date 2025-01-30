@@ -17,7 +17,10 @@ export async function actionBudgetCollection({ request }) {
 
     if (_action === NEW_BUDGET) {
         try {
-            createBudget({ name: values.newBudget, amount: values.newBudgetAmount })
+            createBudget({
+                name: values.newBudget,
+                amount: values.newBudgetAmount
+            })
             return toast.success("Budget created!")
         } catch (e) {
             throw new Error("There was an issue with creating the budget.");

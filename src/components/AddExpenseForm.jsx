@@ -25,23 +25,61 @@ const AddExpenseForm = ({ budgets }) => {
                 </h3>
                 <div className="expense-inputs">
                     <div className="mb-4">
-                        <label htmlFor="newExpense" className="block text-gray-100 text-sm font-bold mb-2">Expense</label>
-                        <input type="text" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline" name="newExpense" id="newExpense" placeholder='e.g. coffee' ref={focusRef} required />
+                        <label
+                            className="block text-gray-100 text-sm font-bold mb-2"
+                            htmlFor="newExpense">
+                            Expense</label>
+                        <input
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                            id="newExpense"
+                            name="newExpense"
+                            placeholder='e.g. coffee'
+                            ref={focusRef}
+                            required
+                            type="text"
+                        />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="newExpenseAmount" className="block text-gray-100 text-sm font-bold mb-2">Amount</label>
-                        <input type="number" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline" step={0.01} inputMode='decimal' name="newExpenseAmount" id="newExpenseAmount" placeholder='e.g. 3.50' required />
+                        <label
+                            className="block text-gray-100 text-sm font-bold mb-2"
+                            htmlFor="newExpenseAmount">
+                            Amount
+                        </label>
+                        <input
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                            id="newExpenseAmount"
+                            inputMode='decimal'
+                            name="newExpenseAmount"
+                            placeholder='e.g. 3.50'
+                            required
+                            step={0.01}
+                            type="number"
+                        />
                     </div>
                     <div className="mb-4" hidden={budgets && budgets.length === 1}>
-                        <label htmlFor="newExpenseBudget" className="block text-gray-100 text-sm font-bold mb-2">Budget Category</label>
-                        <select name="newExpenseBudget" id="newExpenseBudget" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <label
+                            className="block text-gray-100 text-sm font-bold mb-2"
+                            htmlFor="newExpenseBudget">
+                            Budget Category
+                        </label>
+                        <select
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                            id="newExpenseBudget"
+                            name="newExpenseBudget"
+                            required>
                             {budgets && budgets.sort((a, b) => a.createdAt - b.createdAt).map((budget) => (<option key={budget.id} value={budget.id}>{budget.name}</option>))}
                         </select>
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <input type="hidden" name="_action" value={NEW_EXPENSE} />
-                    <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" disabled={isSubmitting}>
+                    <input
+                        name="_action"
+                        type="hidden"
+                        value={NEW_EXPENSE} />
+                    <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        disabled={isSubmitting}
+                        type="submit">
                         <span>
                             {isSubmitting ? 'Submitting...' : 'Create Expense'}
                         </span>

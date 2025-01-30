@@ -21,16 +21,47 @@ const AddBudgetForm = ({ isBudgetEmpty = false }) => {
             <fetcher.Form method='post' ref={formRef}>
                 <h3 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'> {isBudgetEmpty ? "Create a budget to get started" : "New Budget"}</h3>
                 <div className="mb-4">
-                    <label htmlFor="budget" className="block text-gray-100 text-sm font-bold mb-2">Budget Name</label>
-                    <input type="text" name="newBudget" id="newBudget" placeholder='e.g. Groceries' required ref={focusRef} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline" />
+                    <label
+                        htmlFor="budget"
+                        className="block text-gray-100 text-sm font-bold mb-2">
+                        Budget Name
+                    </label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                        id="newBudget"
+                        name="newBudget"
+                        placeholder='e.g. Groceries'
+                        ref={focusRef}
+                        required
+                        type="text"
+                    />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="newBudgetAmount" className="block text-gray-100 text-sm font-bold mb-2">Amount</label>
-                    <input type="number" name="newBudgetAmount" id="newBudgetAmount" step={0.01} placeholder='e.g., $350' className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline" inputMode='decimal' required />
+                    <label
+                        className="block text-gray-100 text-sm font-bold mb-2"
+                        htmlFor="newBudgetAmount" >
+                        Amount
+                    </label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+                        id="newBudgetAmount"
+                        inputMode='decimal'
+                        name="newBudgetAmount"
+                        placeholder='e.g., $350'
+                        step={0.01}
+                        required
+                        type="number"
+                    />
                 </div>
                 <div className="flex justify-center">
-                    <input type="hidden" name="_action" value={NEW_BUDGET} />
-                    <button type="submit" disabled={isSubmitting} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    <input
+                        name="_action"
+                        type="hidden"
+                        value={NEW_BUDGET} />
+                    <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        disabled={isSubmitting}
+                        type="submit">
                         <span>{isSubmitting ? "Submitting..." : "Create Budget"}</span>
                     </button>
                 </div>

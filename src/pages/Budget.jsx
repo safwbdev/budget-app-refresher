@@ -9,11 +9,15 @@ import { DELETE_EXPENSE, NEW_EXPENSE } from '../routes';
 
 export async function loadBudget({ params }) {
     const budget = await getAllMatchingItems({
-        category: "budgets", key: "id", value: params.id
+        category: "budgets",
+        key: "id",
+        value: params.id
     })[0];
 
     const expenses = await getAllMatchingItems({
-        category: "expenses", key: "budgetId", value: params.id
+        category: "expenses",
+        key: "budgetId",
+        value: params.id
     });
 
     if (!budget) {
@@ -40,7 +44,11 @@ export async function actionBudget({ request }) {
 
     if (_action === NEW_EXPENSE) {
         try {
-            createExpense({ name: values.newExpense, amount: values.newExpenseAmount, budgetId: values.newExpenseBudget })
+            createExpense({
+                name: values.newExpense,
+                amount: values.newExpenseAmount,
+                budgetId: values.newExpenseBudget
+            })
             return toast.success(`Expense ${values.newExpense} created!`)
         } catch (e) {
             throw new Error("There was an issue with creating your expense.");
@@ -49,13 +57,13 @@ export async function actionBudget({ request }) {
 }
 
 const Budget = () => {
-    const { budget, expenses } = useLoaderData()
+    const { budget, expenses } = useLoaderData();
+
     return (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-6" >
             <div className="col-span-1">
                 <BudgetItem budget={budget} showDelete={true} />
                 <AddExpenseForm budgets={[budget]} />
-
             </div>
             <div className="col-span-1 md:col-span-3 ">
                 <div className='w-full block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6'>

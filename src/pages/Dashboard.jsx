@@ -39,7 +39,10 @@ export async function actionDashboard({ request }) {
 
     if (_action === NEW_BUDGET) {
         try {
-            createBudget({ name: values.newBudget, amount: values.newBudgetAmount })
+            createBudget({
+                name: values.newBudget,
+                amount: values.newBudgetAmount
+            })
             return toast.success("Budget created!")
         } catch (e) {
             throw new Error("There was an issue with creating the budget.");
@@ -48,7 +51,11 @@ export async function actionDashboard({ request }) {
 
     if (_action === NEW_EXPENSE) {
         try {
-            createExpense({ name: values.newExpense, amount: values.newExpenseAmount, budgetId: values.newExpenseBudget })
+            createExpense({
+                name: values.newExpense,
+                amount: values.newExpenseAmount,
+                budgetId: values.newExpenseBudget
+            })
             return toast.success(`Expense ${values.newExpense} created!`)
         } catch (e) {
             throw new Error("There was an issue with creating your expense.");
@@ -56,7 +63,6 @@ export async function actionDashboard({ request }) {
     }
     if (_action === DELETE_EXPENSE) {
         try {
-
             deleteItem({
                 key: "expenses",
                 id: values.expenseId,
@@ -75,61 +81,59 @@ const Dashboard = () => {
         <>
             {userName ? (
                 <div className='dashboard'>
-                    <div>
-                        <div className="budgets">
-                            <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 px-6'>{userName}'s Budgets</h2>
-                            <div className="grid grid-cols-1 gap-1 md:grid-cols-4 gap-4">
-                                <div className='col-span-1 px-6'>
-                                    {budgets && budgets.length > 0 ? (<AddBudgetForm />
-                                    ) : (
-                                        <>
-                                            <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6 flex justify-center items-center flex-col">
-                                                <p className='text-gray-100 text-lg font-bold'>Personal budgeting is the secret to financial freedom</p>
-                                            </div>
-                                            <AddBudgetForm isBudgetEmpty />
-                                        </>
+                    <div className="budgets">
+                        <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 px-6'>{userName}'s Budgets</h2>
+                        <div className="grid grid-cols-1 gap-1 md:grid-cols-4 gap-4">
+                            <div className='col-span-1 px-6'>
+                                {budgets && budgets.length > 0 ? (<AddBudgetForm />
+                                ) : (
+                                    <>
+                                        <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6 flex justify-center items-center flex-col">
+                                            <p className='text-gray-100 text-lg font-bold'>Personal budgeting is the secret to financial freedom</p>
+                                        </div>
+                                        <AddBudgetForm isBudgetEmpty />
+                                    </>
+                                )}
+                            </div>
+                            <div className="col-span-1 md:col-span-3 order-first md:order-last">
+                                <Swiper
+                                    slidesPerView={1}
+                                    spaceBetween={10}
+                                    pagination={{
+                                        clickable: true,
+                                    }}
+                                    breakpoints={{
+                                        320: {
+                                            slidesPerView: 1.2,
+                                            centeredSlides: true,
+                                            spaceBetween: 20,
+                                            enabled: true
+                                        },
+                                        768: {
+                                            slidesPerView: 3,
+                                            spaceBetween: 40,
+                                            enabled: false
+                                        },
+                                        1024: {
+                                            slidesPerView: 4,
+                                            spaceBetween: 50,
+                                            enabled: false,
+                                        },
+                                    }}
+                                    modules={[Pagination, Navigation]}
+                                >
+                                    {budgets && budgets.map((bud) => (
+                                        <SwiperSlide>
+                                            <BudgetItem key={bud.id} budget={bud} />
+                                        </SwiperSlide>)
                                     )}
-                                </div>
-                                <div className="col-span-1 md:col-span-3 order-first md:order-last">
-                                    <Swiper
-                                        slidesPerView={1}
-                                        spaceBetween={10}
-                                        pagination={{
-                                            clickable: true,
-                                        }}
-                                        breakpoints={{
-                                            320: {
-                                                slidesPerView: 1.2,
-                                                centeredSlides: true,
-                                                spaceBetween: 20,
-                                                enabled: true
-                                            },
-                                            768: {
-                                                slidesPerView: 3,
-                                                spaceBetween: 40,
-                                                enabled: false
-                                            },
-                                            1024: {
-                                                slidesPerView: 4,
-                                                spaceBetween: 50,
-                                                enabled: false,
-                                            },
-                                        }}
-                                        modules={[Pagination, Navigation]}
-                                    >
-                                        {budgets && budgets.map((bud) => (
-                                            <SwiperSlide>
-                                                <BudgetItem key={bud.id} budget={bud} />
-                                            </SwiperSlide>)
-                                        )}
-                                    </Swiper>
-                                    <div className="flex justify-center pt-6">
-                                        <Link to={BUDGET} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
-                                            <span>
-                                                View all Budgets
-                                            </span>
-                                        </Link>
-                                    </div>
+                                </Swiper>
+                                <div className="flex justify-center pt-6">
+                                    <Link to={BUDGET} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
+                                        <span>
+                                            View all Budgets
+                                        </span>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
