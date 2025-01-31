@@ -62,12 +62,12 @@ export const confirmLogout = (event) => {
         event.preventDefault()
     }
 }
-export const confirmDeleteBudget = onSubmit = (event) => {
+export const confirmDeleteBudget = (event) => {
     if (!confirm("Are you sure you want to permanently delete this budget?")) {
         event.preventDefault();
     }
 }
-export const confirmDeleteExpense = onSubmit = (event) => {
+export const confirmDeleteExpense = (event) => {
     if (!confirm("Are you sure you want to permanently delete this expense?")) {
         event.preventDefault();
     }
