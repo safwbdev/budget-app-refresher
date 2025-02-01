@@ -13,6 +13,7 @@ import { Pagination } from 'swiper/modules';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import PieChart from '../components/PieChart';
 
 
 export function loadDashboard() {
@@ -81,6 +82,7 @@ const Dashboard = () => {
         <>
             {userName ? (
                 <div className='dashboard'>
+                    <PieChart budgetData={budgets} />
                     <div className="budgets">
                         <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 px-6'>{userName}'s Budgets</h2>
                         <div className="grid grid-cols-1 gap-1 md:grid-cols-4 gap-4">
