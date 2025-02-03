@@ -82,11 +82,13 @@ const Dashboard = () => {
         <>
             {userName ? (
                 <div className='dashboard'>
-                    <PieChart budgetData={budgets} />
                     <div className="budgets">
                         <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 px-6'>{userName}'s Budgets</h2>
                         <div className="grid grid-cols-1 gap-1 md:grid-cols-4 gap-4">
-                            <div className='col-span-1 px-6'>
+                            <div className='col-span-1 md:col-span-4 order-1'>
+                                <PieChart budgetData={budgets} />
+                            </div>
+                            <div className='col-span-1 px-6 order-3 md:order-2'>
                                 {budgets && budgets.length > 0 ? (<AddBudgetForm />
                                 ) : (
                                     <>
@@ -97,7 +99,7 @@ const Dashboard = () => {
                                     </>
                                 )}
                             </div>
-                            <div className="col-span-1 md:col-span-3 order-first md:order-last">
+                            <div className="col-span-1 md:col-span-3 order-2 md:order-3">
                                 <Swiper
                                     slidesPerView={1}
                                     spaceBetween={10}
@@ -125,8 +127,8 @@ const Dashboard = () => {
                                     modules={[Pagination, Navigation]}
                                 >
                                     {budgets && budgets.map((bud) => (
-                                        <SwiperSlide>
-                                            <BudgetItem key={bud.id} budget={bud} />
+                                        <SwiperSlide key={bud.id}>
+                                            <BudgetItem budget={bud} />
                                         </SwiperSlide>)
                                     )}
                                 </Swiper>

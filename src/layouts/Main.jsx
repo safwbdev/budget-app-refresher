@@ -18,8 +18,7 @@ const Main = () => {
             <main className="py-25">
                 <Outlet />
             </main>
-            {userName && (<BottomNav />
-            )}
+            {userName && (<BottomNav />)}
         </div>
     )
 }
