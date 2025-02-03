@@ -1,19 +1,17 @@
 import React from 'react'
 import { createBudget, createExpense, deleteItem, fetchData, wait } from '../helper'
 import { Link, useLoaderData } from 'react-router-dom';
-import Intro from '../components/Intro';
 import { toast } from 'react-toastify';
-import AddBudgetForm from '../components/AddBudgetForm';
-import AddExpenseForm from '../components/AddExpenseForm';
-import BudgetItem from '../components/BudgetItem';
+import { AddBudgetForm, AddExpenseForm } from '../components/Forms';
+import { BudgetItem } from '../components/Items';
+import Intro from '../components/Intro';
+import PieChart from '../components/PieChart';
 import Table from '../components/Table';
 import { BUDGET, DELETE_EXPENSE, EXPENSES, NEW_BUDGET, NEW_EXPENSE, NEW_USER } from '../routes';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import { Navigation } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import PieChart from '../components/PieChart';
 
 
 export function loadDashboard() {

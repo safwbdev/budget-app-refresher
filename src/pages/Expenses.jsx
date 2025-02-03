@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { createExpense, deleteItem, fetchData } from '../helper'
 import { useLoaderData } from 'react-router-dom'
 import Table from '../components/Table'
-import AddExpenseForm from '../components/AddExpenseForm';
+import { AddExpenseForm } from '../components/Forms';
 import { DELETE_EXPENSE, NEW_EXPENSE } from '../routes';
 import { toast } from 'react-toastify';
 

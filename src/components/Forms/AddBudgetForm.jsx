@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { Form, useFetcher } from 'react-router-dom'
-import { NEW_BUDGET } from '../routes';
+import { NEW_BUDGET } from '../../routes';
 
 const AddBudgetForm = ({ isBudgetEmpty = false }) => {
     const fetcher = useFetcher();

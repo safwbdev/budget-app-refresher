@@ -1,8 +1,8 @@
 import React from 'react'
 import { fetchData } from '../helper'
 import { Outlet, useLoaderData } from 'react-router-dom';
-import Nav from '../components/Nav';
-import BottomNav from '../components/BottomNav';
+import { BottomNav, Nav } from '../components/Navigation';
+
 
 
 export function loadMain() {

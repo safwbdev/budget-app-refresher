@@ -1,8 +1,8 @@
 import React from 'react'
 import { Form, NavLink } from 'react-router-dom'
-import { Links } from '../links'
-import { ROOT } from '../routes'
-import { confirmLogout } from '../helper'
+import { Links } from '../../links'
+import { ROOT } from '../../routes'
+import { confirmLogout } from '../../helper'
 
 const Nav = ({ userName }) => {
     return (

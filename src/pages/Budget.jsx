@@ -2,10 +2,10 @@ import React from 'react'
 import { createExpense, deleteItem, getAllMatchingItems } from '../helper'
 import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import AddExpenseForm from '../components/AddExpenseForm';
-import BudgetItem from '../components/BudgetItem';
 import Table from '../components/Table';
 import { DELETE_EXPENSE, NEW_EXPENSE } from '../routes';
+import { AddExpenseForm } from '../components/Forms';
+import { BudgetItem } from '../components/Items';
 
 export async function loadBudget({ params }) {
     const budget = await getAllMatchingItems({

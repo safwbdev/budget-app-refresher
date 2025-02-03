@@ -1,9 +1,9 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom';
 import { fetchData } from '../helper';
-import BudgetItem from '../components/BudgetItem';
-import AddBudgetForm from '../components/AddBudgetForm';
 import { NEW_BUDGET } from '../routes';
+import { AddBudgetForm } from '../components/Forms';
+import { BudgetItem } from '../components/Items';
 
 export function loadBudgetCollection() {
     const budgets = fetchData("budgets");

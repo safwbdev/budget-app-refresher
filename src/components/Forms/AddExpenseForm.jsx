@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useFetcher } from 'react-router-dom'
-import { NEW_EXPENSE } from '../routes';
+import { NEW_EXPENSE } from '../../routes';
 
 const AddExpenseForm = ({ budgets }) => {
     const fetcher = useFetcher();
