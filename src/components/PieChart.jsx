@@ -1,20 +1,15 @@
 import React from 'react'
 import { Chart } from "react-google-charts";
+import { calculateSpentByBudget } from '../helper';
 
 
 const PieChart = ({ budgetData }) => {
-    const pieData = [
-        ["USD", "Amount Spent"]
-    ];
+    const pieData = [["USD", "Amount Spent"]];
 
-    budgetData.map((bud) => {
-        pieData.push([bud.name, bud.amount])
-    })
+    budgetData.map((bud) => pieData.push([bud.name, calculateSpentByBudget(bud.id)]))
 
-    const pieOptions = {
-        pieHole: 0.2,
-        // is3D: true,
-    };
+    const pieOptions = { pieHole: 0.2 };
+
     return (
         <Chart
             chartType="PieChart"
