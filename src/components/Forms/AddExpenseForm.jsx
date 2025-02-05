@@ -5,15 +5,17 @@ import { NEW_EXPENSE } from '../../routes';
 const AddExpenseForm = ({ budgets }) => {
     const fetcher = useFetcher();
     const isSubmitting = fetcher.state === "submitting"
+    const isLoading = fetcher.state === "loading"
     const formRef = useRef();
     const focusRef = useRef();
 
     useEffect(() => {
-        if (!isSubmitting) {
+
+        if (isLoading) {
             formRef.current.reset()
-            // focusRef.current.focus()
+            focusRef.current.focus()
         }
-    }, [isSubmitting])
+    }, [isLoading])
 
     return (
         <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6">

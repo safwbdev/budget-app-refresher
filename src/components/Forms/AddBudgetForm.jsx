@@ -4,17 +4,19 @@ import { NEW_BUDGET } from '../../routes';
 
 const AddBudgetForm = ({ isBudgetEmpty = false }) => {
     const fetcher = useFetcher();
-    const isSubmitting = fetcher.state == "submitting";
+    const isSubmitting = fetcher.state === "submitting"
+    const isLoading = fetcher.state === "loading"
 
     const formRef = useRef();
     const focusRef = useRef();
 
     useEffect(() => {
-        if (!isSubmitting) {
-            formRef.current.reset();
-            // focusRef.current.focus()
+
+        if (isLoading) {
+            formRef.current.reset()
+            focusRef.current.focus()
         }
-    }, [isSubmitting])
+    }, [isLoading])
 
     return (
         <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6">
