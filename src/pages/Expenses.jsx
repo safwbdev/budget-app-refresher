@@ -51,7 +51,7 @@ const Expenses = () => {
     useEffect(() => {
         if (query.length < 0) return;
 
-        let filteredSearch = expenses.filter((exp) => exp.name.toLowerCase().includes(query));
+        let filteredSearch = expenses.filter((exp) => exp.name.toLowerCase().includes(query.toLowerCase()));
 
         setExpenseData(filteredSearch)
     }, [expenses, query])
