@@ -11,7 +11,7 @@ const AddExpenseForm = ({ budgets }) => {
     useEffect(() => {
         if (!isSubmitting) {
             formRef.current.reset()
-            focusRef.current.focus()
+            // focusRef.current.focus()
         }
     }, [isSubmitting])
 
