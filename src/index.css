@@ -9,19 +9,20 @@
 }
 
 .formBackdrop {
-    position: fixed;
+    align-items: center;
     background: rgba(90, 90, 90, .6);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
     display: flex;
+    height: 100vh;
     justify-content: center;
-    align-items: center
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .floatingBtn {
-    position: fixed;
     bottom: 10%;
+    position: fixed;
     right: 10%;
 }
