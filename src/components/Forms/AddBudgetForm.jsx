@@ -8,7 +8,7 @@ const AddBudgetForm = ({ isBudgetEmpty = false, isHome = false }) => {
     const fetcher = useFetcher();
     const isSubmitting = fetcher.state === "submitting";
 
-    const [openFormWindow, setOpenFormWindow] = useState(false)
+    const [openFormWindow, setOpenFormWindow] = useState(false);
     const isLoading = fetcher.state === "loading";
 
     const formRef = useRef();
@@ -16,9 +16,9 @@ const AddBudgetForm = ({ isBudgetEmpty = false, isHome = false }) => {
 
     useEffect(() => {
         if (isLoading) {
-            formRef.current.reset()
-            focusRef.current.focus()
-            setOpenFormWindow(false)
+            formRef.current.reset();
+            focusRef.current.focus();
+            setOpenFormWindow(false);
         }
     }, [isLoading])
 
@@ -34,7 +34,8 @@ const AddBudgetForm = ({ isBudgetEmpty = false, isHome = false }) => {
                 className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline block md:hidden ${isHome ? 'w-full' : 'floatingBtn'}`}
                 onClick={() => setOpenFormWindow(true)}
 
-            >{isHome ? 'Add New Budget' : <FaPlus className="w-5 h-5 my-2 text-gray-500 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-500" />}</button>
+            >{isHome ? 'Add New Budget' : <FaPlus className="w-5 h-5 my-2 text-gray-500 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-500" />}
+            </button>
             <div className={`md:block ${openFormWindow ? 'formBackdrop' : 'hidden'}`}>
                 <div className="block w-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 mb-6">
                     <fetcher.Form method='post' ref={formRef}>
