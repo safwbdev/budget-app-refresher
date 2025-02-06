@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+// import LineChart from '../components/LineChart';
 
 
 export function loadDashboard() {
@@ -84,8 +85,13 @@ const Dashboard = () => {
                         <h2 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 px-6'>{userName}'s Budgets</h2>
                         <div className="grid grid-cols-1 gap-1 md:grid-cols-4 gap-4">
                             <div className='col-span-1 md:col-span-4 order-1'>
+                                {/* <div className='col-span-1 md:col-span-2 order-1'> */}
                                 <PieChart budgetData={budgets} />
                             </div>
+                            {/* 
+                            <div className='col-span-1 md:col-span-2 order-1'>
+                                <LineChart expenseData={expenses} budgetData={budgets} />
+                            </div> */}
                             <div className='col-span-1 px-6 order-3 md:order-2'>
                                 {budgets && budgets.length > 0 ? (<AddBudgetForm />
                                 ) : (
